@@ -68,8 +68,7 @@ Warning
 
 {% hint style="danger" %}
 Danger
-{% endhint %}
-{% endraw %}
+{% endhint %}{% endraw %}
 ```
 
 {% hint style="info" %}
@@ -131,7 +130,7 @@ fun printHelloWorld() {
 ## 코드 탭
 
 ```md
-{% end %}
+{% raw %}
 {% tabs %}
 {% tab title="첫번째 탭" %}
 첫번째 탭 내용입니다.
@@ -140,8 +139,7 @@ fun printHelloWorld() {
 {% tab title="두번째 탭" %}
 두번째 탭 내용입니다.
 {% endtab %}
-{% endtabs %}
-{% endraw %}
+{% endtabs %}{% endraw %}
 ```
 
 {% tabs %}
