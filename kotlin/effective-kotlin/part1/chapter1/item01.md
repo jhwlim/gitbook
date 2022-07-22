@@ -58,7 +58,6 @@ val fullName2: String? = name?.let { "$it $surname" }
 `fullName`은 게터로 정의했기 때문에 스마트 캐스트할 수 없다.
 
 ```kotlin
-// main
 if (fullName != null) {
     println(fullName.length) // 컴파일 오류, 안전연산자(?.)을 사용하여 호출해야 한다.
 }
@@ -67,7 +66,6 @@ if (fullName != null) {
 `fullName2`처럼 지역 변수가 아닌 프로퍼티(non-local property)가 `final`이고, 사용자 정의 게터를 갖지 않을 경우 스마트 캐스트할 수 있다. 
 
 ```kotlin
-// main
 if (fullName2 != null) {
     println(fulName2.length) // Marton Braun, null이 아니기 때문에 안전연산자(?.)를 사용하지 않아도 된다.
 }
@@ -79,7 +77,86 @@ if (fullName2 != null) {
 
 ### 가변 컬렉션과 읽기 전용 컬렉션 구분하기
 
+코틀린은 읽고 쓸 수 있는 컬렉션과 읽기 전용 컬렉션을 구분한다.
+
+- 읽기 전용 컬렉션 : `Iterable`, `Collectin`, `Set`, `List`
+- 읽고 쓸 수 있는 컬렉션 : `MutableIterable`, `MutableCollection`, `MutableSet`, `MutableList`
+
+mutable이 붙은 인터페이스는 대응되는 읽기 전용 인터페이스를 상속 받아서, 변경을 위한 메서드를 추가한 것이다. 즉, 코틀린은 내부적으로 immutable하지 않은 컬렉션을 외부적으로 immutable하게 보이게 만드는 것이다.
+
+읽기 전용 컬렉션이 내부의 값을 변경할 수 없다는 의미는 아니다. 대부분의 경우에는 변경할 수 있다. 하지만 읽기 전용 인터페이스가 이를 지원하지 않으므로 변경할 수 없고, mutable 컬렉션으로 다운캐스팅해서 값을 변경할 수 있다. 
+
+하지만 다운캐스팅은 읽기 전용으로 사용해야 한다는 규약을 위반하는 것이고, 추상화를 무시하는 행위이다. 안전하지 않고, 예측하지 못한 결과를 초래한다.
+
+```kotlin
+// bad
+val list = listOf(1, 2, 3)
+if (list is MutableList) {
+    list.add(4)
+}
+```
+
+따라서 코틀린에서 읽기 전용 컬렉션을 mutable 컬렉션으로 다운캐스팅하면 안 된다.
+
+만약, 읽기 전용에서 mutable로 변경해야 한다면, 복제(copy)를 통해서 새로운 mutable 컬렉션을 만드는 `toMutableList()`를 활용해야 한다.
+
+```kotlin
+// good
+val list = listOf(1, 2, 3)
+val mutableList = list.toMutableList()
+mutableList.add(4)
+```
+
 ### 데이터 클래스의 copy
+
+**immutable 객체를 사용했을 때의 장점**
+
+- 한 번 정의된 상태가 유지되므로, 코드를 이해하기 쉽다.
+- immutable 객체는 공유했을 때도 충돌이 따로 이루어지지 않으므로, 병렬 처리를 안전하게 할 수 있다.
+- immutable 객체에 대한 참조는 변경되지 않으므로, 쉽게 캐시할 수 있다.
+- immutable 객체는 방어적 복사본(defensive copy)을 만들 필요가 없다. 또한, 객체를 복사할 때 깊은 복사를 따로 하지 않아도 된다.
+- immutable 객체는 다른 mutable 또는 immutable 객체를 만들 때 활용하기 좋다. 또한, immutable 객체는 실행을 더 쉽게 예측할 수 있다.
+- immutable 객체는 `Set` 또는 `Map의 키`로 사용할 수 있다.
+
+{% hint style="info" %}
+mutable 객체는 `Set` 또는 `Map의 키`로 사용할 수 없다. `Set`과 `Map`이 내부적으로 해시 테이블을 사용하고, 해시 테이블은 처음 요소를 넣을 때 요소의 값을 기반으로 버킷을 결정하기 때문이다. 따라서 요소에 수정이 일어나면 해시 테이블 내부에서 요소를 찾을 수 없게 된다.
+{% endhint %}
+
+<br>
+
+mutable 객체는 예측하기 어려우며 위험하다는 단점이 있다. 반면에 immutable 객체는 변경할 수 없다는 단점이 있다. 따라서 **immutable 객체는 자신의 일부를 수정한 새로운 객체를 만들어 내는 메서드를 가져야 한다.**
+
+```kotlin
+class User(
+    val name: String,
+    val surname: String
+) {
+    fun withSurname(surname: String) = User(name, surname)
+}
+```
+```kotlin
+var user = User("Maja", "Markiewicz")
+user = user.withSurname("Moskala")
+println(user) // User(name=Maja, surname=Moskala)
+```
+
+<br>
+
+다만 모든 프로퍼티를 대상으로 이런 함수를 만드는 것은 굉장히 귀찮은 일이다. 데이터 모델 클래스은 `copy`라는 이름의 메서드를 만들어 주는데, 이를 활용하면 모든 기본 생성자 프로퍼티가 같은 새로운 객체를 만들어 낼 수 있다.
+
+```kotlin
+data class User(
+    val name: String,
+    val surname: String
+)
+```
+```kotlin
+var user = User("Maja", "Markiewicz")
+user = user.copy(username = "Moskala")
+println(user) // User(name=Maja, surname=Moskala)
+```
+
+이렇게 데이터 모델 클래스를 만들어 immutable 객체로 만드는 것이 더 많은 장점을 가지므로, 기본적으로는 이렇게 만드는 것이 더 좋다.
 
 ## 다른 종류의 변경 가능 지점
 
