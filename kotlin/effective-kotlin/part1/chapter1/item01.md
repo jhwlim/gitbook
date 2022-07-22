@@ -18,6 +18,65 @@ description: 이펙티브 코틀린 정리하기
 
 ### 읽기 전용 프로퍼티(val)
 
+`val`을 사용해 읽기 전용 프로퍼티를 만들 수 있다. 이렇게 선언된 프로퍼티는 마치 값(value)처럼 동작하며, 일반적인 방법으로는 값이 변하지 않는다.
+
+{% hint style="warning" %}
+읽기 전용 프로퍼티가 완전히 변경 불가능한 것은 아니다.
+
+읽기 전용 프로퍼티가 mutable 객체를 담고 있다면, 내부적으로 변할 수 있다.
+{% endhint %}
+
+<br>
+
+읽기 전용 프로퍼티는 다른 프로퍼티를 활용하는 사용자 정의 게터로도 정의할 수 있다.
+
+```kotlin
+var name = "Marcin"
+var surname = "Moskala"
+val fullName
+    get() = "$name $surname"
+```
+
+```kotlin
+// main
+println(fullName) // Marcin Moskala
+
+name = "Maja"
+println(fullName) // Maja Moskala
+```
+
+게터를 활용하여 정의한 경우, 값을 사용하는 시점의 name에 따라서 다른 결과가 나올 수 있기 때문에 스마트 캐스트할 수 없다.
+
+```kotlin
+val name: String? = "Marton"
+val surname: String? = "Braun"
+val fullName: String?
+    get() = name?.let { "$it $surname" }
+val fullName2: String? = name?.let { "$it $surname" }
+```
+
+`fullName`은 게터로 정의했기 때문에 스마트 캐스트할 수 없다.
+
+```kotlin
+// main
+if (fullName != null) {
+    println(fullName.length) // 컴파일 오류, 안전연산자(?.)을 사용하여 호출해야 한다.
+}
+```
+
+`fullName2`처럼 지역 변수가 아닌 프로퍼티(non-local property)가 `final`이고, 사용자 정의 게터를 갖지 않을 경우 스마트 캐스트할 수 있다. 
+
+```kotlin
+// main
+if (fullName2 != null) {
+    println(fulName2.length) // Marton Braun, null이 아니기 때문에 안전연산자(?.)를 사용하지 않아도 된다.
+}
+```
+
+<br>
+
+읽기 전용 프로퍼티 레퍼런스 자체를 변경할 수 있는 없기 때문에 동기화 문제 등을 줄일 수 있다. 그래서 일반적으로 `var`보다 `val`을 많이 사용한다.
+
 ### 가변 컬렉션과 읽기 전용 컬렉션 구분하기
 
 ### 데이터 클래스의 copy
