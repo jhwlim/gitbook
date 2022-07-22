@@ -1,7 +1,10 @@
 # Summary
 
 - [Home](./README.md)
-  - [GitBook 문서 작성하기](./guide.md)
+  - [GitBook 문서 작성하기](/guide.md)
 
 - [코틀린](/kotlin/README.md)
   - [이펙티브 코틀린](/kotlin/effective-kotlin/README.md)
+    - [1부. 좋은 코드](/kotlin/effective-kotlin/part1/README.md)
+      - [1장. 안정성](/kotlin/effective-kotlin/part1/chapter1/README.md)
+        - [아이템 01. 가변성을 제한하라](/kotlin/effective-kotlin/part1/chapter1/item01.md)
