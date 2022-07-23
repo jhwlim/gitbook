@@ -63,7 +63,7 @@ if (fullName != null) {
 }
 ```
 
-`fullName2`처럼 지역 변수가 아닌 프로퍼티(non-local property)가 `final`이고, 사용자 정의 게터를 갖지 않을 경우 스마트 캐스트할 수 있다. 
+`fullName2`처럼 지역 변수가 아닌 프로퍼티(non-local property)가 `final`이고, 사용자 정의 게터를 갖지 않을 경우 스마트 캐스트할 수 있다.
 
 ```kotlin
 if (fullName2 != null) {
@@ -84,7 +84,7 @@ if (fullName2 != null) {
 
 mutable이 붙은 인터페이스는 대응되는 읽기 전용 인터페이스를 상속 받아서, 변경을 위한 메서드를 추가한 것이다. 즉, 코틀린은 내부적으로 immutable하지 않은 컬렉션을 외부적으로 immutable하게 보이게 만드는 것이다.
 
-읽기 전용 컬렉션이 내부의 값을 변경할 수 없다는 의미는 아니다. 대부분의 경우에는 변경할 수 있다. 하지만 읽기 전용 인터페이스가 이를 지원하지 않으므로 변경할 수 없고, mutable 컬렉션으로 다운캐스팅해서 값을 변경할 수 있다. 
+읽기 전용 컬렉션이 내부의 값을 변경할 수 없다는 의미는 아니다. 대부분의 경우에는 변경할 수 있다. 하지만 읽기 전용 인터페이스가 이를 지원하지 않으므로 변경할 수 없고, mutable 컬렉션으로 다운캐스팅해서 값을 변경할 수 있다.
 
 하지만 다운캐스팅은 읽기 전용으로 사용해야 한다는 규약을 위반하는 것이고, 추상화를 무시하는 행위이다. 안전하지 않고, 예측하지 못한 결과를 초래한다.
 
@@ -134,6 +134,7 @@ class User(
     fun withSurname(surname: String) = User(name, surname)
 }
 ```
+
 ```kotlin
 var user = User("Maja", "Markiewicz")
 user = user.withSurname("Moskala")
@@ -142,7 +143,7 @@ println(user) // User(name=Maja, surname=Moskala)
 
 <br>
 
-다만 모든 프로퍼티를 대상으로 이런 함수를 만드는 것은 굉장히 귀찮은 일이다. 데이터 모델 클래스은 `copy`라는 이름의 메서드를 만들어 주는데, 이를 활용하면 모든 기본 생성자 프로퍼티가 같은 새로운 객체를 만들어 낼 수 있다.
+다만 모든 프로퍼티를 대상으로 이런 함수를 만드는 것은 굉장히 귀찮은 일이다. **데이터 모델 클래스은 `copy`라는 이름의 메서드를 만들어 주는데, 이를 활용하면 모든 기본 생성자 프로퍼티가 같은 새로운 객체를 만들어 낼 수 있다.**
 
 ```kotlin
 data class User(
@@ -150,6 +151,7 @@ data class User(
     val surname: String
 )
 ```
+
 ```kotlin
 var user = User("Maja", "Markiewicz")
 user = user.copy(username = "Moskala")
@@ -160,7 +162,159 @@ println(user) // User(name=Maja, surname=Moskala)
 
 ## 다른 종류의 변경 가능 지점
 
+변경할 수 있는 리스트를 만드는 방법
+
+- mutable 컬렉션을 만드는 것
+- mutable 프로퍼티를 만드는 것
+
+### mutable 컬렉션을 만드는 것
+
+구체적인 리스트 구현 내부에 변경 가능 지점이 있다.
+
+```kotlin
+val list1: MutableList<Int> = mutableListOf()
+list1.add(1)
+assertThat(list1.size).isEqualTo(1)
+assertThat(list1[0]).isEqualTo(1)
+
+list1 += 2 // list1.plusAssign(1)
+assertThat(list1.size).isEqualTo(2)
+assertThat(list1[0]).isEqualTo(1)
+assertThat(list1[1]).isEqualTo(2)
+```
+
+{% hint style="warning" %}
+멀티스레드 처리가 이루어질 경우, 내부적으로 적절한 동기화가 되어 있는지 확실하게 알 수 없으므로 위험하다.
+{% endhint %}
+
+```kotlin
+var list = listOf<Int>()
+for (i in 1..1000) {
+    thread {
+        list = list + i
+    }
+}
+Thread.sleep(1000)
+assertThat(list.size).isNotEqualTo(1000) // 1000이 되지 않을 수 있다.
+```
+
+### mutable 프로퍼티를 만드는 것
+
+프로퍼티 자체가 변경 가능 지점이다.
+
+```kotlin
+var list2: List<Int> = listOf()
+list2 = list2 + 1
+assertThat(list2.size).isEqualTo(1)
+assertThat(list2[0]).isEqualTo(1)
+
+list2 += 2 // list2.plus(2); 실제로 내부 로직을 살펴보면 새로운 리스트를 생성한다.
+assertThat(list2.size).isEqualTo(2)
+assertThat(list2[0]).isEqualTo(1)
+assertThat(list2[1]).isEqualTo(2)
+```
+
+{% hint style="success" %}
+멀티스레드 처리의 안정성이 더 좋다고 할 수 있다. (물론 잘못 만들면 일부 요소가 손실될 수도 있다.)
+{% endhint %}
+
+<br>
+
+**mutalbe 프로퍼티를 사용하는 형태는 사용자 정의 세터를 활용하여 변경을 추적할 수 있다.**
+
+`Delegates.observable()`을 사용하면, 리스트에 변경이 있을 때 로그를 출력할 수 있다.
+
+```kotlin
+var names by Delegates.observable(listOf<String>()) { _, old, new -> println("Names changed from $old to $new")}
+
+names += "Fabio" // Names changed from [] to [Fabio]
+assertThat(names.size).isEqualTo(1)
+assertThat(names[0]).isEqualTo("Fabio")
+
+names += "Bill" // Names changed from [Fabio] to [Fabio, Bill]
+assertThat(names.size).isEqualTo(2)
+assertThat(names[0]).isEqualTo("Fabio")
+assertThat(names[1]).isEqualTo("Bill")
+```
+
+mutable 컬렉션도 위와 같이 관찰(observe)할 수 있게 만들려면, 추가적인 구현이 필요하다.
+
+따라서 mutable 프로퍼티에 읽기 전용 컬렉션을 넣어 사용하는 것이 쉽다. 여러 객체를 변경하는 여러 메서드 대신 세터를 사용할 수 있고, private으로 만들 수도 있다는 장점이 있다.
+
+```kotlin
+var announcements = listOf<Announcement>()
+    private set(value) { ... }
+```
+
+{% hint style="success" %}
+mutable 프로퍼티를 사용하면 객체 변경을 제어하기가 더 쉽다.
+{% endhint %}
+
+{% hint style="danger" %}
+프로퍼티와 컬렉션을 모두 변경 가능한 지점으로 만들지 마라.
+
+- 변경될 수 있는 두 지점 모두에 대한 동기화를 구현해야 한다.
+- 또한 모호성이 발생해서 `+=`을 사용할 수 없다.
+
+```kotlin
+var list3 = mutableListOf<Int>()
+```
+
+{% endhint %}
+
+<br>
+
+상태를 변경할 수 있는 불필요한 방법은 만들지 않아야 한다. 상태를 변경하는 모든 방법은 코드를 이해하고 유지해야 하므로 비용이 발행한다. 따라서 **가변성을 제한하는 것이 좋다.**
+
 ## 변경 가능 지점 노출하지 말기
+
+### mutable 객체를 외부에 노출하는 것은 돌발적인 수정이 일어날 때 위험할 수 있다.
+
+```kotlin
+data class User(val name: String)
+
+class UserRepository {
+
+    private val storedUsers: MutableMap<Int, String> = mutableMapOf()
+
+    fun loadAll(): MutableMap<Int, String> = storedUsers
+
+}
+```
+
+```kotlin
+val userRepository = UserRepository()
+
+val storedUsers = userRepository.loadAll()
+storedUsers[4] = "Kirill"
+
+assertThat(storedUsers.size).isEqualTo(1)
+assertThat(storedUsers[4]).isEqualTo("Kirill")
+```
+
+### 방법 (1) 리턴되는 mutable 객체를 복제하기
+
+```kotlin
+class UserHolder {
+
+    private val user: MutableUser()
+
+    fun get(): MutableUser = user.copy()
+
+}
+```
+
+### 방법 (2) 컬렉션은 객체를 읽기 전용 슈퍼타입으로 업캐스트하기
+
+```kotlin
+class UserRepository {
+
+    private val storedUsers: MutableMap<Int, String> = mutableMapOf()
+
+    fun loadAll(): Map<Int, String> = storedUsers
+
+}
+```
 
 ## 정리
 
