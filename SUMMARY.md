@@ -13,4 +13,5 @@
         - [아이템 04. inferred 타입으로 리턴하지 말라](/kotlin/effective-kotlin/part1/chapter1/item04.md)
         - [아이템 05. 예외를 활용해 코드에 제한을 걸어라](/kotlin/effective-kotlin/part1/chapter1/item05.md)
         - [아이템 06. 사용자 정의 오류보다는 표준 오류를 사용하라](/kotlin/effective-kotlin/part1/chapter1/item06.md)
+        - [아이템 07. 결과 부족이 발생할 경우 null과 Failure를 사용하라](/kotlin/effective-kotlin/part1/chapter1/item07.md)
       - [2장. 가독성](/kotlin/effective-kotlin/part1/chapter2/README.md)
