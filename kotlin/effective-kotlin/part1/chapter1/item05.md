@@ -8,7 +8,7 @@ description: 이펙티브 코틀린 정리하기
 확실하게 어떤 형태로 동작해야 하는 코드가 있다면, 예외를 활용해 제한을 걸어주는 것이 좋다.
 {% endhint %}
 
-### 코드의 동작에 제한을 거는 방법
+## 코드의 동작에 제한을 거는 방법
 
 - `require()` : 아규먼트를 제한할 수 있다.
 - `check()` : 상태와 관련된 동작을 제한할 수 있다.
@@ -94,7 +94,7 @@ fun next() {
 
 ## Assert 계열 함수
 
-구현 문제로 발생할 수 있는 추가적인 문제를 예방하려면 단위 테스트를 사용하는 것이 좋다. 하지만 한 경우만 테스트 해서 모든 상황에서 괜찮은지는 알 수 없다. 
+구현 문제로 발생할 수 있는 추가적인 문제를 예방하려면 단위 테스트를 사용하는 것이 좋다. 하지만 한 경우만 테스트 해서 모든 상황에서 괜찮은지는 알 수 없다.
 
 함수 내부에서 Assert 계열의 함수를 사용해서 모든 케이스에서 제대로 동작하는지 확인할 수 있다. 이러한 조건은 현재 코틀린/JVM에서만 활성화되며, -ea JVM 옵션을 활성화해야 확인할 수 있다. 다만 **프로덕션 환경에서는 오류가 발생하지 않는다. 테스트를 할 때만 활성화되므로, 오류가 발생해도 사용자가 알아차릴 수 없다.**
 
@@ -115,7 +115,7 @@ Assert 계열의 함수를 사용해도 여전히 단위 테스트는 따로 작
 
 ## 스마트 캐스팅와 nullability
 
-코틀린에서 `require()`와 `check()`는 어떤 조건을 확인해서 true가 나왔다면 해당 조건은 이후로도 true라고 가정한다. 
+코틀린에서 `require()`와 `check()`는 어떤 조건을 확인해서 true가 나왔다면 해당 조건은 이후로도 true라고 가정한다.
 
 따라서 이를 활용해서 타입 비교를 했다면 스마트 캐스팅된다.
 
@@ -127,7 +127,7 @@ fun changeDress(person: Person) {
 }
 ```
 
-이러한 특정은 어떤 대상이 null인지 확인할 때 유용하다. 
+이러한 특정은 어떤 대상이 null인지 확인할 때 유용하다.
 
 ```kotlin
 class Person(val email: String?)
@@ -165,7 +165,7 @@ fun sendEmail(person: Person, message: String) {
 
 ```kotlin
 fun sendEmail(person: Person, text: String) {
-    val email: String = person.email ?: run { 
+    val email: String = person.email ?: run {
         log("Email not sent, no email address) // person.email이 null 이라면 원인을 로그에 출력하고 sendEmail()를 중지한다.
         return
     }
@@ -174,7 +174,7 @@ fun sendEmail(person: Person, text: String) {
 ```
 
 {% hint style="success" %}
-`return`과 `throw`를 활용한 Elvis 연산자는 nullable을 확인할 때 굉장히 많이 사용되는 관용적인 방법으로 적극적으로 활용하는 것이 좋다.
+`throw` 또는 `return`을 활용한 Elvis 연산자는 nullable을 확인할 때 굉장히 많이 사용되는 관용적인 방법으로 적극적으로 활용하는 것이 좋다.
 
 또한, 이러한 코드는 함수의 앞부분에 넣어서 잘 보이게 만드는 것이 좋다.
 {% endhint %}
