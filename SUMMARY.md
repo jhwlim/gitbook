@@ -16,4 +16,5 @@
         - [아이템 07. 결과 부족이 발생할 경우 null과 Failure를 사용하라](/kotlin/effective-kotlin/part1/chapter1/item07.md)
         - [아이템 08. 적절하게 null을 처리하라](/kotlin/effective-kotlin/part1/chapter1/item08.md)
         - [아이템 09. use를 사용하여 리소스를 닫아라](/kotlin/effective-kotlin/part1/chapter1/item09.md)
+        - [아이템 10. 단위 테스트를 만들어라](/kotlin/effective-kotlin/part1/chapter1/item10.md)
       - [2장. 가독성](/kotlin/effective-kotlin/part1/chapter2/README.md)
