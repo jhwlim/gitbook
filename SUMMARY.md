@@ -18,3 +18,4 @@
         - [아이템 09. use를 사용하여 리소스를 닫아라](/kotlin/effective-kotlin/part1/chapter1/item09.md)
         - [아이템 10. 단위 테스트를 만들어라](/kotlin/effective-kotlin/part1/chapter1/item10.md)
       - [2장. 가독성](/kotlin/effective-kotlin/part1/chapter2/README.md)
+        - [아이템 11. 가독성을 목표로 설계하라](/kotlin/effective-kotlin/part1/chapter2/item11.md)
