@@ -19,3 +19,4 @@
         - [아이템 10. 단위 테스트를 만들어라](/kotlin/effective-kotlin/part1/chapter1/item10.md)
       - [2장. 가독성](/kotlin/effective-kotlin/part1/chapter2/README.md)
         - [아이템 11. 가독성을 목표로 설계하라](/kotlin/effective-kotlin/part1/chapter2/item11.md)
+        - [아이템 12. 연산자 오버로드를 할 때는 의미에 맞게 사용하라](/kotlin/effective-kotlin/part1/chapter2/item12.md)
