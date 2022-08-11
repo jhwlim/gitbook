@@ -21,3 +21,4 @@
         - [아이템 11. 가독성을 목표로 설계하라](/kotlin/effective-kotlin/part1/chapter2/item11.md)
         - [아이템 12. 연산자 오버로드를 할 때는 의미에 맞게 사용하라](/kotlin/effective-kotlin/part1/chapter2/item12.md)
         - [아이템 13. Unit?을 리턴하지 말자](/kotlin/effective-kotlin/part1/chapter2/item13.md)
+        - [아이템 14. 변수 타입이 명확하지 않은 경우 확실하게 지정하라](/kotlin/effective-kotlin/part1/chapter2/item14.md)
