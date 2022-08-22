@@ -184,7 +184,7 @@ content
 
 
 
-## 페이지 링
+## 페이지 링크
 
 {% content-ref url="get-started/page-layout/" %}
 [page-layout](get-started/page-layout/)
