@@ -153,3 +153,48 @@ fun printHelloWorld() {
 두번째 탭 내용입니다.
 {% endtab %}
 {% endtabs %}
+
+
+
+## Expandable
+
+<details>
+
+<summary>Title</summary>
+
+content
+
+</details>
+
+
+
+## Drawing
+
+<img src=".gitbook/assets/file.drawing.svg" alt="" class="gitbook-drawing">
+
+
+
+## API Method
+
+{% swagger method="get" path="" baseUrl="" summary="" %}
+{% swagger-description %}
+
+{% endswagger-description %}
+{% endswagger %}
+
+
+
+## 페이지 링
+
+{% content-ref url="get-started/page-layout/" %}
+[page-layout](get-started/page-layout/)
+{% endcontent-ref %}
+
+
+
+## Embedded
+
+{% embed url="https://gist.github.com/jhwlim/5864a71752b649dd17bd4fb766e917ff" %}
+
+{% embed url="https://www.youtube.com/watch?list=RDw9JE8b-84UI&start_radio=1&v=w9JE8b-84UI" %}
+

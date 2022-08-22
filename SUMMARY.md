@@ -3,6 +3,10 @@
 ## Get Started
 
 * [GitBook 문서 작성하기](README.md)
+* [페이지 레이아웃](get-started/page-layout/README.md)
+  * [Docs Page](get-started/page-layout/docs-page.md)
+  * [Editorial Post](get-started/page-layout/editorial-post.md)
+  * [Landing Page](get-started/page-layout/landing-page.md)
 
 ## Kotlin
 
