@@ -29,8 +29,9 @@
       * [아이템 13. Unit?을 리턴하지 말자](kotlin/effective-kotlin/part1/chapter2/item13.md)
       * [아이템 14. 변수 타입이 명확하지 않은 경우 확실하게 지정하라](kotlin/effective-kotlin/part1/chapter2/item14.md)
       * [아이템 15. 리시버를 명시적으로 참조하라](kotlin/effective-kotlin/part1/chapter2/item15.md)
-      * [아이템 16. 프로퍼티는 동작이 아니라 상태를 나타내야 한다.](kotlin/effective-kotlin/part1/chapter2/item16.md)
+      * [아이템 16. 프로퍼티는 동작이 아니라 상태를 나타내야 한다](kotlin/effective-kotlin/part1/chapter2/item16.md)
       * [아이템 17. 이름 있는 아규먼트를 사용하라](kotlin/effective-kotlin/part1/chapter2/item17.md)
+      * [아이템 18. 코딩 컨벤션을 지켜라](kotlin/effective-kotlin/part1/chapter2/item18.md)
 
 ## Database
 
