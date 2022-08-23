@@ -30,6 +30,7 @@
       * [아이템 14. 변수 타입이 명확하지 않은 경우 확실하게 지정하라](kotlin/effective-kotlin/part1/chapter2/item14.md)
       * [아이템 15. 리시버를 명시적으로 참조하라](kotlin/effective-kotlin/part1/chapter2/item15.md)
       * [아이템 16. 프로퍼티는 동작이 아니라 상태를 나타내야 한다.](kotlin/effective-kotlin/part1/chapter2/item16.md)
+      * [아이템 17. 이름 있는 아규먼트를 사용하라](kotlin/effective-kotlin/part1/chapter2/item17.md)
 
 ## Database
 
