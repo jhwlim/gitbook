@@ -181,3 +181,51 @@ contravariant(`in` 한정자) 사용 예시
 - 타입 파라미터
 - `kotlin.coroutines.Continuation`
 
+## variance 한정자의 위치
+
+(1) 선언 부분 
+
+일반적으로 이 위치에서 사용된다. 이 위치에서 사용하면 클래스와 인터페이스 선언에 한정자가 적용된다. 따라서 클래스와 인터페이스가 사용되는 모든 곳에 영향을 준다.
+
+```kotlin
+// 선언 쪽의 variance 한정자
+class Box<out T>(val value: T)
+val boxStr: Box<String> = Box("Str")
+val boxAny: Box<Any> = boxStr
+```
+
+(2) 클래스와 인터페이스를 활용하는 위치
+
+이 위치에 variance 한정자를 사용하면 특정한 변수에만 variance 한정자가 적용된다. 모든 인스턴스에 variance 한정자를 적용하면 안되고, 특정 인스턴스에만 적용해야할 때 사용한다.
+
+```kotlin
+class Box<T>(val value: T)
+val boxStr: Box<String> = Box("Str")
+// 사용하는 쪽의 variance 한정자
+val boxAny: Box<out Any> = boxStr
+```
+
+{% hint style="success" %}
+variance 한정자를 사용하면, 위치가 제한될 수 있다.
+{% endhint %}
+
+`MutableList<out T>`가 있다면, get으로 요소를 추출했을 때 T 타입이 나올 것이다. 하지만 set은 `Nothing` 타입의 아규먼트가 전달될 거라 예상되므로 사용할 수 없다. 이는 모든 타입의 서브타입을 가진 리스트(`Nothing` 리스트)가 존재할 가능성이 있기 때문이다.
+
+`MutableList<in T>`를 사용할 경우, get과 set을 모두 사용할 수 있다. 하지만 get을 사용할 경우, 전달되는 자료형은 `Any?`가 된다. 이는 모든 타입의 슈퍼타입을 가진 리스트(`Any` 리스트)가 존재할 가능성이 있기 때문이다.
+
+## 정리
+
+코틀린의 타입 한정자
+
+- 타입 파라미터의 기본적인 variance의 동작은 invariant 이다. A가 B의 서브타입이라고 할때, `Cup<A>`와 `Cup<B>`는 아무런 관계를 갖지 않는다.
+- `out` 한정자는 타입 파라미터를 covariant하게 만든다. A가 B의 서브타입이라고 할때, `Cup<A>`는 `Cup<B>`의 서브타입이 된다.
+- `in` 한정자는 타입 파라미터를 contravariant하게 만든다. A가 B의 서브타입이라고 할때, `Cup<B>`는 `Cup<A>`의 서브타입이 된다.
+
+코틀린에서는
+
+- List와 Set의 타입 파라미터는 covariant(`out` 한정자)이다.
+- Map에서 값의 타입을 나타내는 타입 파라미터는 covariant(`out` 한정자)이다.
+- Array, MutableList, MutableSet, MutableMap의 타입 파라미터는 invariant(한정자 없음)이다.
+- 함수 타입의 파라미터 타입은 contravariant(`in` 한정자)이다. 그리고 리턴 타입은 contravariant(`out` 한정자)이다.
+- 리턴만 되는 타입에는 covariant(`out` 한정자)를 사용한다.
+- 허용만 되는 타입에는 contravariant(`in` 한정자)를 사용한다.
