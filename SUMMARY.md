@@ -41,6 +41,14 @@
     * [아이템 23. 타입 파라미터의 섀도잉을 피하라](kotlin/effective-kotlin/chapter3/item23.md)
     * [아이템 24. 제네릭 타입과 variance 한정자를 활용하라](kotlin/effective-kotlin/chapter3/item24.md)
     * [아이템 25. 공통 모듈을 추출해서 여러 플랫폼에서 재사용하라](kotlin/effective-kotlin/chapter3/item25.md)
+  * [4장. 추상화 설계](kotlin/effective-kotlin/chapter4/index.md)
+    * [아이템 26. 함수 내부의 추상화 레벨을 통일하라](kotlin/effective-kotlin/chapter4/item26.md)
+    * [아이템 27. 변화로부터 코드를 보호하려면 추상화를 사용하라](kotlin/effective-kotlin/chapter4/item27.md)
+    * [아이템 28. API 안정성을 확인하라](kotlin/effective-kotlin/chapter4/item28.md)
+    * [아이템 29. 외부 API를 랩(wrap)해서 사용하라](kotlin/effective-kotlin/chapter4/item29.md)
+    * [아이템 30. 요소의 가시성을 최소화하라](kotlin/effective-kotlin/chapter4/item30.md)
+    * [아이템 31. 문서로 규약을 정의하라](kotlin/effective-kotlin/chapter4/item31.md)
+    * [아이템 32. 추상화 규약을 지켜라](kotlin/effective-kotlin/chapter4/item32.md)
 
 ## Database
 
