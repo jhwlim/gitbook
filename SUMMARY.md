@@ -49,6 +49,10 @@
     * [아이템 30. 요소의 가시성을 최소화하라](kotlin/effective-kotlin/chapter4/item30.md)
     * [아이템 31. 문서로 규약을 정의하라](kotlin/effective-kotlin/chapter4/item31.md)
     * [아이템 32. 추상화 규약을 지켜라](kotlin/effective-kotlin/chapter4/item32.md)
+  * [5장. 객체 생성](kotlin/effective-kotlin/chapter5/index.md)
+    * [아이템 33. 생성자 대신 팩토리 함수를 사용하라](kotlin/effective-kotlin/chapter5/item33.md)
+    * [아이템 34. 기본 생성자에 이름 있는 옵션 아규먼트를 사용하라](kotlin/effective-kotlin/chapter5/item34.md)
+    * [아이템 35. 복잡한 객체를 생성하기 위한 DSL을 정의하라](kotlin/effective-kotlin/chapter5/item35.md)
 
 ## Database
 
