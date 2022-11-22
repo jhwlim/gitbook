@@ -53,6 +53,16 @@
     * [아이템 33. 생성자 대신 팩토리 함수를 사용하라](kotlin/effective-kotlin/chapter5/item33.md)
     * [아이템 34. 기본 생성자에 이름 있는 옵션 아규먼트를 사용하라](kotlin/effective-kotlin/chapter5/item34.md)
     * [아이템 35. 복잡한 객체를 생성하기 위한 DSL을 정의하라](kotlin/effective-kotlin/chapter5/item35.md)
+  * [6장. 클래스 설계](kotlin/effective-kotlin/chapter6/index.md)
+    * [아이템 36. 상속보다는 컴포지션을 사용하라](kotlin/effective-kotlin/chapter6/item36.md)
+    * [아이템 37. 데이터 집합 표현에 data 한정자를 사용하라](kotlin/effective-kotlin/chapter6/item37.md)
+    * [아이템 38. 연산 또는 액션을 전달할 때는 인터페이스 대신 함수 타입을 사용하라](kotlin/effective-kotlin/chapter6/item38.md)
+    * [아이템 39. 태그 클래스보다는 클래스 계층을 사용하라](kotlin/effective-kotlin/chapter6/item39.md)
+    * [아이템 40. equals의 규약을 지켜라](kotlin/effective-kotlin/chapter6/item40.md)
+    * [아이템 41. hashCode의 규약을 지켜라](kotlin/effective-kotlin/chapter6/item41.md)
+    * [아이템 42. compareTo의 규약을 지켜라](kotlin/effective-kotlin/chapter6/item42.md)
+    * [아이템 43. API의 필수적이지 않는 부분을 확장 함수로 추출하라](kotlin/effective-kotlin/chapter6/item43.md)
+    * [아이템 44. 멤버 확장 함수의 사용을 피하라](kotlin/effective-kotlin/chapter6/item44.md)
 
 ## Database
 
