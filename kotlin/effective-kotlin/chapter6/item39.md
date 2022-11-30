@@ -115,4 +115,52 @@ fun <T> ValueMatcher<T>.resersed(): ValueMatcher<T> = when (this) {
 
 ## 태그 클래스와 상태 패턴의 차이
 
+### 상태 패턴
+
+객체의 내부 상태가 변화할 때, 객체의 동작이 변하는 소프트웨어 디자인 패턴
+
+프런트엔드 각각 MVC, MVP, MVVM 아키텍처에서 컨트롤러(controller), 프레젠터(presenter), 뷰(view) 모델을 설계할 때 많이 사용된다. 
+
+상태 패턴을 사용한다면, 서로 다른 상태를 나타내는 클래스 계층 구조를 만들게 된다. 그리고 현재 상태를 나타내기 위한 읽고 쓸 수 있는 프로퍼티도 만들게 된다.
+
+```kotlin
+sealed class WorkoutState
+
+class PrepareState(
+    val exercise: Exercise
+) : WorkoutState()
+
+class ExerciseState(
+    val exercise: Exercise
+) : WorkoutState()
+
+object DoneState : WorkoutState()
+
+fun List<Exercise>.toStates(): List<WorkoutState> = flatMap { exercise -> 
+    listOf(PrepareState(exercise), ExerciseState(exercise)) 
+} + DoneState
+
+class WorkoutPresenter( /* ... */ ) {
+    private var state: WorkoutState = states.first()
+}
+```
+
+차이점
+
+- 상태는 더 많은 책임을 가진 큰 클래스이다.
+- 상태는 변경할 수 있다.
+
+구체 상태는 객체를 활용해서 표현하는 것이 일반적이며, 태그 클래스보다는 sealed 클래스 계층으로 만든다. 또한 이를 immutable 객체로 만들고 변경해야 할 때마다 `state` 프로퍼티를 변경하게 만든다. 그리고 뷰에서 이러한 `state`의 변화를 관찰한다.
+
+```kotlin
+private var state: WorkoutState by
+    Delegates.observable(states.first()) { _, _, _ -> 
+        updateView()
+    }
+```
+
 ## 정리
+
+코틀린에서는 태그 클래스보다 타입 계층을 사용하는 것이 좋다. 그리고 일반적으로 이러한 타입 계층을 만들 때는 sealed 클래스를 사용한다.
+
+타입 계층과 상태 패턴은 실질적으로 함께 사용하는 협력 관계라고 할 수 있다. 하나의 뷰를 가지는 경우보다는 여러 개의 상태로 구분할 수 있는 뷰를 가질 때 많이 활용된다.
