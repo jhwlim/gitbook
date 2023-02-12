@@ -18,7 +18,7 @@ vagrant init
 {% tabs %}
 {% tab title="Vagrantfile" %}
 
-```
+```ruby
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
@@ -41,13 +41,6 @@ $ cat /etc/redhat-release # 운영 체제 종류 확인하기
 $ exit # 가상머신 빠져나오기
 
 vagrant destroy -f # 가상 머신 삭제 (+ 강제종료)
-```
-
-### ⚠️ mount: unknown filesystem type 'vboxsf'
-
-```shell
-# vagrant-vbguest 플러그인 설치
-vagrant plugin install vagrant-vbguest
 ```
 
 ## 테스트 환경 구축
@@ -117,8 +110,6 @@ ping 182.168.1.101 -c 3
 ping 182.168.1.102 -c 3
 ping 182.168.1.103 -c 3
 ```
-
-{% endtab %}
 {% endtab %}
 {% tab title="config.sh" %}
 
