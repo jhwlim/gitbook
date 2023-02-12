@@ -102,7 +102,6 @@ yum install vim-enhanced -y # 코드 하이라이트 설치
 ```
 
 {% endtab %}
-{% endtab %}
 {% tab title="ping_2_nds.sh" %}
 
 ```shell
@@ -110,6 +109,7 @@ ping 182.168.1.101 -c 3
 ping 182.168.1.102 -c 3
 ping 182.168.1.103 -c 3
 ```
+
 {% endtab %}
 {% tab title="config.sh" %}
 
