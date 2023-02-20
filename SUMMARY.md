@@ -116,3 +116,4 @@
     - [4.1 도커를 알아야 하는 이유](infra/kubernates-docker/chapter4/1.md)
     - [4.2 도커로 컨테이너 다루기](infra/kubernates-docker/chapter4/2.md)
     - [4.3 4가지 방법으로 컨테이너 이미지 만들기](infra/kubernates-docker/chapter4/3.md)
+    - [4.4 쿠버네티스에서 직접 만든 컨테이너 사용하기](infra/kubernates-docker/chapter4/4.md)
