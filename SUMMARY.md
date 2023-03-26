@@ -120,3 +120,4 @@
   - [5장. 지속적 통합과 배포 자동화, 젠킨스](infra/kubernates-docker/chapter5/README.md)
     - [5.1 컨테이너 인프라 환경에서 CI/CD](infra/kubernates-docker/chapter5/1.md)
   - [6장. 안정적인 운영을 완성하는 모니터링, 프로메테우스와 그라파나](infra/kubernates-docker/chapter6/README.md)
+    - [6.1 컨테이너 인프라 환경 모니터링하기](infra/kubernates-docker/chapter6/1.md)
