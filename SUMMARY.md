@@ -123,3 +123,5 @@
     - [6.1 컨테이너 인프라 환경 모니터링하기](infra/kubernates-docker/chapter6/1.md)
     - [6.2 프로메테우스로 모니터링 데이터 수집과 통합하기](infra/kubernates-docker/chapter6/2.md)
     - [6.3 PromQL로 메트릭 데이터 추출하기](infra/kubernates-docker/chapter6/3.md)
+    - [6.4 그라파나로 모니터링 데이터 시각화하기](infra/kubernates-docker/chapter6/4.md)
+    - [6.5 좀 더 견고한 모니터링 환경 만들기](infra/kubernates-docker/chapter6/5.md)
