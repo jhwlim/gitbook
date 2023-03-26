@@ -119,3 +119,4 @@
     - [4.4 쿠버네티스에서 직접 만든 컨테이너 사용하기](infra/kubernates-docker/chapter4/4.md)
   - [5장. 지속적 통합과 배포 자동화, 젠킨스](infra/kubernates-docker/chapter5/README.md)
     - [5.1 컨테이너 인프라 환경에서 CI/CD](infra/kubernates-docker/chapter5/1.md)
+  - [6장. 안정적인 운영을 완성하는 모니터링, 프로메테우스와 그라파나](infra/kubernates-docker/chapter6/README.md)
