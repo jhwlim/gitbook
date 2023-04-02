@@ -102,6 +102,7 @@
 - [MySQL](database/mysql/README.md)
   - [Real MySQL 8.0](database/mysql/real-mysql-8/README.md)
     - [04. 아키텍처](database/mysql/real-mysql-8/ch04/README.md)
+      - [4.1 MySQL 엔진 아키텍처](database/mysql/real-mysql-8/ch04/1.md)
 - [MongoDB](database/mongodb/index.md)
   - [Get Started](database/mongodb/get-started.md)
   - [몽고DB 완벽 가이드](database/mongodb/mongodb-the-definitive-guide-3rd/index.md)
