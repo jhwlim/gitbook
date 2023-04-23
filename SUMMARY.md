@@ -106,6 +106,7 @@
       - [2. InnoDB 스토리지 엔진 아키텍처](database/mysql/real-mysql-8/ch04/2.md)
       - [3. MyISAM 스토리지 엔진 아키텍처](database/mysql/real-mysql-8/ch04/3.md)
       - [4. MySQL 로그 파일](database/mysql/real-mysql-8/ch04/4.md)
+    - [05. 트랜잭션과 잠금](database/mysql/real-mysql-8/ch05/README.md)
 - [MongoDB](database/mongodb/index.md)
   - [Get Started](database/mongodb/get-started.md)
   - [몽고DB 완벽 가이드](database/mongodb/mongodb-the-definitive-guide-3rd/index.md)
