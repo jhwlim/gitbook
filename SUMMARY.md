@@ -114,7 +114,7 @@
     - [06. 데이터 압축](database/mysql/real-mysql-8/ch06/README.md)
       - [1. 페이지 압축](database/mysql/real-mysql-8/ch06/1.md)
       - [2. 테이블 압축](database/mysql/real-mysql-8/ch06/2.md)
-    - [07. 데이터 암호화](database/mysql/real-mysql-8/ch06/README.md)
+    - [07. 데이터 암호화](database/mysql/real-mysql-8/ch07/README.md)
       - [1. MySQL 서버의 데이터 암호화](database/mysql/real-mysql-8/ch07/1.md)
       - [2. keyring_file 플러그인 설치](database/mysql/real-mysql-8/ch07/2.md)
       - [3. 테이블 암호화](database/mysql/real-mysql-8/ch07/3.md)
