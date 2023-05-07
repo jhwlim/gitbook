@@ -123,6 +123,8 @@
     - [08. 인덱스](database/mysql/real-mysql-8/ch08/README.md)
       - [1. 디스크 읽기 방식](database/mysql/real-mysql-8/ch08/1.md)
       - [2. 인덱스란?](database/mysql/real-mysql-8/ch08/2.md)
+      - [3. B-Tree 인덱스](database/mysql/real-mysql-8/ch08/3.md)
+      - [4. R-Tree 인덱스](database/mysql/real-mysql-8/ch08/4.md)
 - [MongoDB](database/mongodb/index.md)
   - [Get Started](database/mongodb/get-started.md)
   - [몽고DB 완벽 가이드](database/mongodb/mongodb-the-definitive-guide-3rd/index.md)
