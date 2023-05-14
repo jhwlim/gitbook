@@ -129,7 +129,7 @@
       - [6. 함수 기반 인덱스](database/mysql/real-mysql-8/ch08/6.md)
       - [7. 멀티 밸류 인덱스](database/mysql/real-mysql-8/ch08/7.md)
       - [8. 클러스터링 인덱스](database/mysql/real-mysql-8/ch08/8.md)
-      - [9. 유니크 인덱스](database/mysql/real-mysql-8/ch08/9..md)
+      - [9. 유니크 인덱스](database/mysql/real-mysql-8/ch08/9.md)
       - [10. 외래키](database/mysql/real-mysql-8/ch08/10.md)
 - [MongoDB](database/mongodb/index.md)
   - [Get Started](database/mongodb/get-started.md)
