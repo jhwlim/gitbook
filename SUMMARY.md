@@ -139,6 +139,7 @@
     - [10. 실행 계획](database/mysql/real-mysql-8/ch10/README.md)
       - [1. 통계 정보](database/mysql/real-mysql-8/ch10/1.md)
       - [2. 실행 계획 확인](database/mysql/real-mysql-8/ch10/2.md)
+      - [3. 실행 계획 분석](database/mysql/real-mysql-8/ch10/3.md)
 - [MongoDB](database/mongodb/index.md)
   - [Get Started](database/mongodb/get-started.md)
   - [몽고DB 완벽 가이드](database/mongodb/mongodb-the-definitive-guide-3rd/index.md)
