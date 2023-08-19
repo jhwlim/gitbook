@@ -143,6 +143,8 @@
     - [11. 쿼리작성 및 연관된 시스템 변수](database/mysql/real-mysql-8/ch11/README.md)
       - [4. SELECT](database/mysql/real-mysql-8/ch11/4.md)
       - [5. INSERT](database/mysql/real-mysql-8/ch11/5.md)
+      - [6. UPDATE와 DELETE](database/mysql/real-mysql-8/ch11/6.md)
+      - [7. 스키마 조작(DDL)](database/mysql/real-mysql-8/ch11/7.md)
 - [MongoDB](database/mongodb/index.md)
   - [Get Started](database/mongodb/get-started.md)
   - [몽고DB 완벽 가이드](database/mongodb/mongodb-the-definitive-guide-3rd/index.md)
