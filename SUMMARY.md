@@ -145,6 +145,7 @@
       - [5. INSERT](database/mysql/real-mysql-8/ch11/5.md)
       - [6. UPDATE와 DELETE](database/mysql/real-mysql-8/ch11/6.md)
       - [7. 스키마 조작(DDL)](database/mysql/real-mysql-8/ch11/7.md)
+      - [8. 쿼리 성능 테스트](database/mysql/real-mysql-8/ch11/8.md)
     - [13. 파티션](database/mysql/real-mysql-8/ch13/README.md)
       - [1. 개요](database/mysql/real-mysql-8/ch13/1.md)
       - [2. 주의사항](database/mysql/real-mysql-8/ch13/2.md)
