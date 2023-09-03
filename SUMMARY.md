@@ -149,6 +149,13 @@
     - [13. 파티션](database/mysql/real-mysql-8/ch13/README.md)
       - [1. 개요](database/mysql/real-mysql-8/ch13/1.md)
       - [2. 주의사항](database/mysql/real-mysql-8/ch13/2.md)
+      - [3. MySQL 파티션의 종류](database/mysql/real-mysql-8/ch13/3.md)
+    - 14. 스토어드 프로그램
+    - 15. 데이터 타입
+    - [16. 복제](database/mysql/real-mysql-8/ch16/README.md)
+      - [1. 개요](database/mysql/real-mysql-8/ch16/1.md)
+      - [2. 복제 아티텍처](database/mysql/real-mysql-8/ch16/2.md)
+      - [3. 복제 타입](database/mysql/real-mysql-8/ch16/3.md)
 - [MongoDB](database/mongodb/index.md)
   - [Get Started](database/mongodb/get-started.md)
   - [몽고DB 완벽 가이드](database/mongodb/mongodb-the-definitive-guide-3rd/index.md)
