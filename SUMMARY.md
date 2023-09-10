@@ -156,6 +156,8 @@
       - [1. 개요](database/mysql/real-mysql-8/ch16/1.md)
       - [2. 복제 아티텍처](database/mysql/real-mysql-8/ch16/2.md)
       - [3. 복제 타입](database/mysql/real-mysql-8/ch16/3.md)
+      - [5. 복제 동기화 방식](database/mysql/real-mysql-8/ch16/5.md)
+      - [6. 복제 토폴로지](database/mysql/real-mysql-8/ch16/6.md)
 - [MongoDB](database/mongodb/index.md)
   - [Get Started](database/mongodb/get-started.md)
   - [몽고DB 완벽 가이드](database/mongodb/mongodb-the-definitive-guide-3rd/index.md)
